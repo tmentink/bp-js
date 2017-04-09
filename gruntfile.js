@@ -13,16 +13,23 @@ module.exports = function(grunt) {
                 " * Licensed under <%= pkg.license %>\n" +
                 " */\n",
     clean: {
-      js: ["<%= concat.js.dest %>"]
+      js: ["<%= concat.js.dest %>", "<%= ts.dev.dest %>", "<%= ts.dev.dest %>.map"]
     },
     concat: {
       js: {
-        src: ["src/js/vendor/jquery-shim.js"],
+        src: ["src/js/vendor/jquery-shim.js", "<%= ts.dev.dest %>"],
         dest: "src/js/main.js"
       }
     },
-    eslint: {
-      target: ["src/js/**/*.js"]
+    ts: {
+      options: {
+        fast: "never",
+        comments: true
+      },
+      dev: {
+        src: ["src/ts/**/*.ts"],
+        dest: "src/js/ts-compile.js"
+      }
     },
     uglify: {
       dev: {
@@ -50,6 +57,10 @@ module.exports = function(grunt) {
       js: {
         files: ["src/js/**/*.js"],
         tasks: ["concat", "uglify:dev"]
+      },
+      ts: {
+        files: ["src/ts/**/*.ts"],
+        tasks: ["ts:dev", "concat", "uglify:dev"]
       }
     }
   });
@@ -57,7 +68,7 @@ module.exports = function(grunt) {
   require("load-grunt-tasks")(grunt);
   require("time-grunt")(grunt);
 
-  grunt.registerTask("default", ["eslint", "concat", "uglify", "clean"]);
-  grunt.registerTask("lint", ["eslint"]);
+  grunt.registerTask("default", ["ts", "concat", "uglify", "clean"]);
+  grunt.registerTask("ts-compile", ["ts"])
 };
 
