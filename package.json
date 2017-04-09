@@ -1,0 +1,32 @@
+{
+  "name": "project-name",
+  "version": "1.0.0",
+  "description": "TODO: Write a project description",
+  "main": "dist/project-name.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tmentink/project-name.git"
+  },
+  "author": "Trent Mentink",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tmentink/project-name/issues"
+  },
+  "homepage": "https://github.com/tmentink/project-name",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.19.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-uglify": "^2.2.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-eslint": "^19.0.0",
+    "load-grunt-tasks": "^3.5.2",
+    "mocha": "^3.2.0",
+    "time-grunt": "^1.4.0"
+  }
+}
