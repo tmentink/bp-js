@@ -181,4 +181,3 @@
   window.$ = $
 
 })(window)
-

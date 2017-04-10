@@ -68,4 +68,3 @@ module.exports = function(grunt) {
   grunt.registerTask("default", ["eslint", "concat", "babel", "uglify", "clean"])
   grunt.registerTask("lint", ["eslint"])
 }
-
