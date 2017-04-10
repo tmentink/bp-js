@@ -3,7 +3,7 @@
 // ------------------------------------------------------------------------
 
 module.exports = function(grunt) {
-  "use strict";
+  "use strict"
 
   grunt.initConfig({
     pkg: grunt.file.readJSON("package.json"),
@@ -12,6 +12,13 @@ module.exports = function(grunt) {
                 " * Copyright <%= grunt.template.today('yyyy') %> <%= pkg.author %>\n" +
                 " * Licensed under <%= pkg.license %>\n" +
                 " */\n",
+    babel: {
+      js: {
+        files: {
+          "<%= concat.js.dest %>" : "<%= concat.js.dest %>"
+        }
+      }
+    },
     clean: {
       js: ["<%= concat.js.dest %>"]
     },
@@ -27,13 +34,14 @@ module.exports = function(grunt) {
     uglify: {
       dev: {
         options: {
+          banner: "<%= banner %>",
           beautify: {
             beautify: true,
             indent_level: 2,
           },
-          mangle: false,
           compress: false,
-          banner: "<%= banner %>"
+          mangle: false,
+          preserveComments: /\*/
         },
         src: "<%= concat.js.dest %>",
         dest: "dist/<%= pkg.name %>.js",
@@ -49,15 +57,15 @@ module.exports = function(grunt) {
     watch: {
       js: {
         files: ["src/js/**/*.js"],
-        tasks: ["concat", "uglify:dev"]
+        tasks: ["concat", "babel", "uglify:dev"]
       }
     }
-  });
+  })
 
-  require("load-grunt-tasks")(grunt);
-  require("time-grunt")(grunt);
+  require("load-grunt-tasks")(grunt)
+  require("time-grunt")(grunt)
 
-  grunt.registerTask("default", ["eslint", "concat", "uglify", "clean"]);
-  grunt.registerTask("lint", ["eslint"]);
-};
+  grunt.registerTask("default", ["eslint", "concat", "babel", "uglify", "clean"])
+  grunt.registerTask("lint", ["eslint"])
+}
 
