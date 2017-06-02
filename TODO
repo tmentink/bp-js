@@ -1,6 +1,6 @@
 
 Setup:
-  ☐ Updated Project Name in all files
+  ☐ Update Project Name in all files
     ☐ package.json
-    ☐ demo/index.html
+    ☐ test/visual/index.html
     ☐ src/js/vendor/jquery-shim.js
