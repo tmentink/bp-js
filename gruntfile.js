@@ -9,10 +9,10 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON("package.json"),
     version: "<%= pkg.version %>-alpha",
     banner: "/*!\n" +
-                " * <%= pkg.name %> v<%= version %> (<%= pkg.homepage %>)\n" +
-                " * Copyright <%= grunt.template.today('yyyy') %> <%= pkg.author %>\n" +
-                " * Licensed under <%= pkg.license %>\n" +
-                " */\n",
+            " * <%= pkg.name %> v<%= version %> (<%= pkg.homepage %>)\n" +
+            " * Copyright <%= grunt.template.today('yyyy') %> <%= pkg.author %>\n" +
+            " * Licensed under <%= pkg.license %>\n" +
+            " */\n",
     dependencyCheck: "",
 
 
@@ -75,7 +75,7 @@ module.exports = function(grunt) {
     watch: {
       js: {
         files: ["src/js/**/*.js"],
-        tasks: ["concat", "stamp", "babel", "uglify:dev", "clean"]
+        tasks: ["concat", "babel", "stamp", "uglify:dev", "clean"]
       }
     }
   })
@@ -83,6 +83,6 @@ module.exports = function(grunt) {
   require("load-grunt-tasks")(grunt)
   require("time-grunt")(grunt)
 
-  grunt.registerTask("default", ["eslint", "concat", "stamp", "babel", "uglify", "clean"])
+  grunt.registerTask("default", ["eslint", "concat", "babel", "stamp", "uglify", "clean"])
   grunt.registerTask("lint", ["eslint"])
 }

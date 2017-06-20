@@ -48,7 +48,7 @@
   }
 
   $.isWindow = function(obj) {
-    return obj != null && obj === obj.window
+    return obj !== null && obj === obj.window
   }
 
   $.isFunction = function(obj) {
@@ -88,7 +88,7 @@
       return true
     }
 
-    // Objects with prototype are plain if they were constructed by a global Object function
+    // Objects with prototype are plain when constructed by a global Object function
     Ctor = hasOwn.call(proto, "constructor") && proto.constructor
     return typeof Ctor === "function" && fnToString.call(Ctor) === ObjectFunctionString
   }
@@ -132,7 +132,7 @@
     for (; i < length; i++) {
 
       // Only deal with non-null/undefined values
-      if ((options = arguments[i]) != null) {
+      if ((options = arguments[i]) !== null) {
 
         // Extend the base object
         for (name in options) {

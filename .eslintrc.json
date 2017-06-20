@@ -9,6 +9,10 @@
       "error", 
       "always"
     ],
+    "eqeqeq": [
+      "error",
+      "always"
+    ],
     "indent": [
       "error",
       2,
@@ -19,6 +23,10 @@
     "linebreak-style": [
       "error",
       "unix"
+    ],
+    "max-len": [
+      "error",
+      90
     ],
     "no-console": [
       "warn"
