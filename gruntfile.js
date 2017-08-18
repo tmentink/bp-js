@@ -14,6 +14,10 @@ module.exports = function(grunt) {
             " * Licensed under <%= pkg.license %>\n" +
             " */\n",
     dependencyCheck: "",
+    closure: {
+      start: "!function() {\n",
+      end: "}()"
+    },
 
 
     // --------------------------------------------------------------------
@@ -42,7 +46,8 @@ module.exports = function(grunt) {
     stamp: {
       project: {
         options: {
-          banner: "<%= dependencyCheck %>"
+          banner: "<%= dependencyCheck %><%= closure.start %>",
+          footer: "<%= closure.end %>"
         },
         files: {
           src: "<%= concat.project.dest %>"
@@ -75,7 +80,7 @@ module.exports = function(grunt) {
     watch: {
       js: {
         files: ["src/js/**/*.js"],
-        tasks: ["concat", "babel", "stamp", "uglify:dev", "clean"]
+        tasks: ["concat", "stamp", "babel", "uglify:dev", "clean"]
       }
     }
   })
